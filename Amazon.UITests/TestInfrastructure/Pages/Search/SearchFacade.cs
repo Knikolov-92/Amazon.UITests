@@ -11,11 +11,6 @@ namespace Amazon.UITests.TestInfrastructure.Pages.Search
         public void NavigateToSearchPage()
         {
             NavigateToPage(PageUrls.SEARCH_PAGE_URL);
-        }
-
-        public void AcceptCookies()
-        {
-            Elements.AcceptCookiesButton.Click();
-        }
+        }        
     }
 }

@@ -1,4 +1,5 @@
-﻿using Amazon.UITests.TestInfrastructure.Pages.Search;
+﻿using Amazon.UITests.TestInfrastructure.Pages.Cookie;
+using Amazon.UITests.TestInfrastructure.Pages.Search;
 using TechTalk.SpecFlow;
 
 namespace Amazon.UITests.Steps
@@ -7,6 +8,7 @@ namespace Amazon.UITests.Steps
     public sealed class AddItemToBasketStepDefinitions
     {        
         private SearchFacade _search;
+        private CookieFacade _cookie;
 
         public AddItemToBasketStepDefinitions()
         {
@@ -23,7 +25,7 @@ namespace Amazon.UITests.Steps
         public void ThenTheAmazonPageIsLoaded()
         {
             _search.Validate().SearchPageIsLoaded();
-            _search.AcceptCookies();
+            _cookie.AcceptCookies();
         }
 
     }
