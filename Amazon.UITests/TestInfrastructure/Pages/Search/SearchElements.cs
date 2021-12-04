@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using OpenQA.Selenium;
 
 namespace Amazon.UITests.TestInfrastructure.Pages.Search
 {
     public class SearchElements : BaseElements
     {
+        public IWebElement AcceptCookiesButton => Driver.FindElement(By.Id("sp-cc-accept"));
     }
 }

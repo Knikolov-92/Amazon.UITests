@@ -1,27 +1,17 @@
-﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using TechTalk.SpecFlow;
+﻿using Amazon.UITests.Drivers;
+
 
 namespace Amazon.UITests.TestInfrastructure.Pages
 {
     public class BaseFacade
     {
-        private IWebDriver Driver;
-
-        public BaseFacade(ScenarioContext scenarioContext)
+        protected void NavigateToPage(string url)
         {
-            this.Driver = scenarioContext.Get<IWebDriver>("WebDriver");
-        }
-
-        public void NavigateToPage(string url)
-        {
-            Driver.Navigate().GoToUrl(url);
+            Browser.Instance.WebDriver.Navigate().GoToUrl(url);
         }
     }
 
-    public class BaseFacade<TElementMap, TValidator> where TElementMap : BaseElements, new()
+    public class BaseFacade<TElementMap, TValidator> : BaseFacade where TElementMap : BaseElements, new()
         where TValidator : BaseValidator<TElementMap>, new()
     {
         protected BaseFacade() : base()
@@ -34,5 +24,6 @@ namespace Amazon.UITests.TestInfrastructure.Pages
         {
             return new TValidator();
         }
+        
     }    
 }

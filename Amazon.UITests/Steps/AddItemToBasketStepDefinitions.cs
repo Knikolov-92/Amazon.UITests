@@ -1,5 +1,4 @@
-﻿using Amazon.UITests.TestInfrastructure.Pages;
-using OpenQA.Selenium;
+﻿using Amazon.UITests.TestInfrastructure.Pages.Search;
 using TechTalk.SpecFlow;
 
 namespace Amazon.UITests.Steps
@@ -7,20 +6,25 @@ namespace Amazon.UITests.Steps
     [Binding]
     public sealed class AddItemToBasketStepDefinitions
     {        
-        private BaseFacade _base;
+        private SearchFacade _search;
 
-        private readonly ScenarioContext _scenarioContext;
-
-        public AddItemToBasketStepDefinitions(ScenarioContext scenarioContext)
+        public AddItemToBasketStepDefinitions()
         {
-            _scenarioContext = scenarioContext;
-            _base = new BaseFacade(scenarioContext);
+            _search = new SearchFacade();
         }
 
-        [Given("^I navigate to Amazon page$")]
+        [Given("^I navigate to AmazonPage$")]
         public void GivenINavigateToAmazonPage()
         {
-            _base.NavigateToPage("http://amazon.co.uk");
-        }       
+            _search.NavigateToSearchPage();
+        }
+        
+        [Then("^The AmazonPage is loaded$")]
+        public void ThenTheAmazonPageIsLoaded()
+        {
+            _search.Validate().SearchPageIsLoaded();
+            _search.AcceptCookies();
+        }
+
     }
 }

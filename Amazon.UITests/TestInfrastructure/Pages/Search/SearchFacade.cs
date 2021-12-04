@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Amazon.UITests.TestInfrastructure.Constants;
 
 namespace Amazon.UITests.TestInfrastructure.Pages.Search
 {
@@ -8,6 +6,16 @@ namespace Amazon.UITests.TestInfrastructure.Pages.Search
     {
         public SearchFacade() : base()
         {
+        }
+
+        public void NavigateToSearchPage()
+        {
+            NavigateToPage(PageUrls.SEARCH_PAGE_URL);
+        }
+
+        public void AcceptCookies()
+        {
+            Elements.AcceptCookiesButton.Click();
         }
     }
 }
