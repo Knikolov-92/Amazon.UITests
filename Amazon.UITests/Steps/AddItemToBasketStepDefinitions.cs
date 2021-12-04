@@ -13,6 +13,7 @@ namespace Amazon.UITests.Steps
         public AddItemToBasketStepDefinitions()
         {
             _search = new SearchFacade();
+            _cookie = new CookieFacade();
         }
 
         [Given("^I navigate to AmazonPage$")]
