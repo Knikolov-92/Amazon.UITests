@@ -4,7 +4,10 @@ using System.Text;
 
 namespace Amazon.UITests.TestInfrastructure.Pages.Search
 {
-    class SearchFacade
+    public class SearchFacade : BaseFacade<SearchElements, SearchValidator>
     {
+        public SearchFacade() : base()
+        {
+        }
     }
 }

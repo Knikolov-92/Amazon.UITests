@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Amazon.UITests.TestInfrastructure.Pages.Search
 {
-    class SearchValidator
+    public class SearchValidator : BaseValidator<SearchElements>
     {
     }
 }

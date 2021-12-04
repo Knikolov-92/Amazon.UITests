@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Amazon.UITests.TestInfrastructure.Pages
 {
-    public class BaseElementMap
+    public class BaseElements
     {
     }
 }

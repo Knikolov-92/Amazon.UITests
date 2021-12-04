@@ -20,7 +20,8 @@ namespace Amazon.UITests.TestInfrastructure.Pages
             Driver.Navigate().GoToUrl(url);
         }
     }
-    public class BaseFacade<TElementMap, TValidator> where TElementMap : BaseElementMap, new()
+
+    public class BaseFacade<TElementMap, TValidator> where TElementMap : BaseElements, new()
         where TValidator : BaseValidator<TElementMap>, new()
     {
         protected BaseFacade() : base()
