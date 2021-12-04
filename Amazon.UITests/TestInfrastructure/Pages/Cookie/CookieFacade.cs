@@ -5,7 +5,7 @@ namespace Amazon.UITests.TestInfrastructure.Pages.Cookie
     {
         public void AcceptCookies()
         {
-            Elements.AcceptCookiesButton.Click();
+            ClickOn(() => Elements.AcceptCookiesButton);
         }
     }
 }
