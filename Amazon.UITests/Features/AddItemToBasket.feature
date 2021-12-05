@@ -8,10 +8,10 @@ Background:
 Scenario: Search a book and add it to basket
 	
 	When User searches for a book with title: "Harry Potter and the Cursed Child"
-	Then The first item has the title: "Harry Potter and the Cursed Child - Parts One and Two: The Official Playscript of the Original West End Production"
+	Then The first item in results has the title: "Harry Potter and the Cursed Child - Parts One and Two: The Official Playscript of the Original West End Production"
 	And The first item has a badge
 	And The first item has type: "Paperback"
-	And The first item has price for type
+	And The first item has price for the given type
 	When User opens the book details
 	Then The item has the correct title
 	And The item has a badge

@@ -119,8 +119,8 @@ this.FeatureBackground();
  testRunner.When("User searches for a book with title: \"Harry Potter and the Cursed Child\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 11
- testRunner.Then("The first item has the title: \"Harry Potter and the Cursed Child - Parts One and " +
-                        "Two: The Official Playscript of the Original West End Production\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("The first item in results has the title: \"Harry Potter and the Cursed Child - Par" +
+                        "ts One and Two: The Official Playscript of the Original West End Production\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 12
  testRunner.And("The first item has a badge", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -129,7 +129,7 @@ this.FeatureBackground();
  testRunner.And("The first item has type: \"Paperback\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 14
- testRunner.And("The first item has price for type", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("The first item has price for the given type", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 15
  testRunner.When("User opens the book details", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");

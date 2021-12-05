@@ -40,8 +40,8 @@ namespace Amazon.UITests.Steps
             _search.SearchForABook(title);
         }
 
-        [Then("^The first item has the title: \"(.*)\"$")]
-        public void ThenTheFirstItemHasTheTitle(string title)
+        [Then("^The first item in results has the title: \"(.*)\"$")]
+        public void ThenTheFirstItemInResultsHasTheTitle(string title)
         {
             _book.Title = _searchResult.Validate().FirstResultTitleIs(title);            
         }
@@ -60,8 +60,8 @@ namespace Amazon.UITests.Steps
             _book.Type = type;
         }
 
-        [Then("^The first item has price for type$")]
-        public void ThenTheFirstItemHasPriceForType()
+        [Then("^The first item has price for the given type$")]
+        public void ThenTheFirstItemHasPriceForTheGivenType()
         {
             _book.Price = _searchResult.Validate().FirstResultHasPriceForType(_book.Type);
         }
@@ -73,7 +73,7 @@ namespace Amazon.UITests.Steps
         }
 
         [Then("^The item has the correct title$")]
-        public void ThenTheItemHasTheTitle()
+        public void ThenTheItemHasTheCorrectTitle()
         {
             _itemDetails.Validate().ItemHasTitle(_book.Title);
         }
@@ -85,19 +85,19 @@ namespace Amazon.UITests.Steps
         }
 
         [Then("^The item has the correct selected type$")]
-        public void ThenTheItemHasType()
+        public void ThenTheItemHasTheCorrectSelectedType()
         {
             _itemDetails.Validate().SelectedItemTypeIs(_book.Type);
         }
 
         [Then("^The item has the correct selected price$")]
-        public void ThenTheItemHasPriceForType()
+        public void ThenTheItemHasTheCorrectSelectedPrice()
         {
             _itemDetails.Validate().SelectedItemPriceIs(_book.Price);
         }
 
         [When("^User adds item to the basket$")]
-        public void WhenUserAddsItemToBasket()
+        public void WhenUserAddsItemToTheBasket()
         {
             _itemDetails.AddItemToBasket();
         }
