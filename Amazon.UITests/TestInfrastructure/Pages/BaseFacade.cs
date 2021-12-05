@@ -7,12 +7,12 @@ using OpenQA.Selenium.Support.UI;
 
 namespace Amazon.UITests.TestInfrastructure.Pages
 {
-    public class BaseFacade<TElementMap, TValidator> where TElementMap : BaseElements, new()
-        where TValidator : BaseValidator<TElementMap>, new()
+    public class BaseFacade<TElements, TValidator> where TElements : BaseElements, new()
+        where TValidator : BaseValidator<TElements>, new()
     {
         public BaseFacade(){}
 
-        protected TElementMap Elements => new TElementMap();
+        protected TElements Elements => new TElements();
 
         public TValidator Validate()
         {
