@@ -3,6 +3,7 @@ using Amazon.UITests.TestInfrastructure.Helpers;
 using Amazon.UITests.TestInfrastructure.Extensions;
 using OpenQA.Selenium;
 using System;
+using OpenQA.Selenium.Support.UI;
 
 namespace Amazon.UITests.TestInfrastructure.Pages
 {
@@ -37,6 +38,13 @@ namespace Amazon.UITests.TestInfrastructure.Pages
 
             field.Clear();
             field.SendKeys(text);
+        }
+
+        protected void SelectItemFromDropdown(IWebElement dropdown, string text)
+        {
+            SelectElement categoryDropdown = new SelectElement(dropdown);
+
+            categoryDropdown.SelectByText(text);
         }
     }  
 }

@@ -6,9 +6,9 @@ namespace Amazon.UITests.Steps
 {
     [Binding]
     public sealed class AddItemToBasketStepDefinitions
-    {        
-        private SearchFacade _search = new SearchFacade();
-        private CookieFacade _cookie = new CookieFacade();
+    {
+        private readonly CookieFacade _cookie = new CookieFacade();
+        private readonly SearchFacade _search = new SearchFacade();        
 
 
         [Given("^User has navigated to the Amazon page$")]
@@ -24,10 +24,16 @@ namespace Amazon.UITests.Steps
             _cookie.AcceptCookies();
         }
 
-        [When("^User searches for a book with title \"(.*)\"$")]
+        [When("^User searches for a book with title: \"(.*)\"$")]
         public void WhenUserSearchesForABookWithTitle(string title)
         {
             _search.SearchForABook(title);
+        }
+
+        [Then("^The First item has the title: \"(.*)\"$")]
+        public void ThenTheFirstItemHasTheTitle(string title)
+        {
+
         }
 
     }

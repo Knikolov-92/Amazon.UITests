@@ -1,7 +1,6 @@
 ﻿using Amazon.UITests.TestInfrastructure.Constants;
 using Amazon.UITests.TestInfrastructure.Helpers;
 using Amazon.UITests.TestInfrastructure.Extensions;
-using OpenQA.Selenium.Support.UI;
 
 namespace Amazon.UITests.TestInfrastructure.Pages.Search
 {
@@ -24,23 +23,16 @@ namespace Amazon.UITests.TestInfrastructure.Pages.Search
 
         private void SearchForItem(string itemName)
         {
-            var searchField = WebElementUtility.WaitForElementToBeDisplayed(() => Elements.SearchInputField);
-            var searchButton = WebElementUtility.WaitForElementToBeDisplayed(() => Elements.SearchButton);
-
-            searchField.Clear();
-            searchField.SendKeys(itemName);
-
-            searchButton.WaitForElementToBeClickable();
-            searchButton.Click();
+            EnterTextInField(() => Elements.SearchInputField, itemName);
+            ClickOn(() => Elements.SearchButton);
         }
 
         private void SelectSearchCategory(string category)
         {
             var dropdownElementButton = WebElementUtility.WaitForElementToBeDisplayed(() => Elements.CategoryDropdownButton);
             dropdownElementButton.WaitForElementToBeClickable();
-            SelectElement categoryDropdown = new SelectElement(Elements.CategoryDropdown);
 
-            categoryDropdown.SelectByText(category);
+            SelectItemFromDropdown(Elements.CategoryDropdown, category);           
         }
     }
 }
