@@ -14,5 +14,10 @@ namespace Amazon.UITests.TestInfrastructure.Extensions
             var wait = new WebDriverWait(Browser.Instance.WebDriver, TimeSpan.FromSeconds(Timeouts.DEFAULT_TIMEOUT_IN_SECONDS));
             wait.Until(ExpectedConditions.ElementToBeClickable(element));
         }
+
+        public static string GetAriaLabel(this IWebElement element)
+        {
+            return element.GetAttribute("aria-label");
+        }
     }
 }

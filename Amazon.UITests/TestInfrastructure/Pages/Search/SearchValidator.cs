@@ -6,8 +6,8 @@ namespace Amazon.UITests.TestInfrastructure.Pages.Search
     {
         public void SearchPageIsLoaded()
         {
-            CurrentPageUrlIs(PageUrls.SEARCH_PAGE_URL);
-            CurrentPageTitleIs(PageTitles.SEARCH_PAGE_TITLE);
+            ValidateCurrentPageUrlIs(PageUrls.SEARCH_PAGE_URL);
+            ValidateCurrentPageTitleIs(PageTitles.SEARCH_PAGE_TITLE);
         }
     }
 }

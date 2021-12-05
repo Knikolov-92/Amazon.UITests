@@ -1,5 +1,6 @@
 ﻿using Amazon.UITests.TestInfrastructure.Pages.Cookie;
 using Amazon.UITests.TestInfrastructure.Pages.Search;
+using Amazon.UITests.TestInfrastructure.Pages.SearchResult;
 using TechTalk.SpecFlow;
 
 namespace Amazon.UITests.Steps
@@ -8,8 +9,8 @@ namespace Amazon.UITests.Steps
     public sealed class AddItemToBasketStepDefinitions
     {
         private readonly CookieFacade _cookie = new CookieFacade();
-        private readonly SearchFacade _search = new SearchFacade();        
-
+        private readonly SearchFacade _search = new SearchFacade();
+        private readonly SearchResultFacade _searchResult = new SearchResultFacade();
 
         [Given("^User has navigated to the Amazon page$")]
         public void GivenUserHasNavigatedToTheAmazonPage()
@@ -30,11 +31,16 @@ namespace Amazon.UITests.Steps
             _search.SearchForABook(title);
         }
 
-        [Then("^The First item has the title: \"(.*)\"$")]
+        [Then("^The first item has the title: \"(.*)\"$")]
         public void ThenTheFirstItemHasTheTitle(string title)
         {
-
+            _searchResult.Validate().FirstResultTitleIs(title);
         }
 
+        [Then("^The first item has a badge$")]
+        public void ThenTheFirstItemHasABadge()
+        {
+            _searchResult.Validate().FirstResultContainsBadge();
+        }
     }
 }

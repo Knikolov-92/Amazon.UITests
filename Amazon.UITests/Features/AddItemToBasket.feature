@@ -8,6 +8,5 @@ Background:
 Scenario: Search a book and add it to basket
 	
 	When User searches for a book with title: "Harry Potter and the Cursed Child"
-	Then The First item has the title: "Harry Potter and the Cursed Child - Parts One & Two"
-	
-	
+	Then The first item has the title: "Harry Potter and the Cursed Child - Parts One and Two: The Official Playscript of the Original West End Production"
+	And The first item has a badge

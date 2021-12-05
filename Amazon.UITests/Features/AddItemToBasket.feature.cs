@@ -119,8 +119,11 @@ this.FeatureBackground();
  testRunner.When("User searches for a book with title: \"Harry Potter and the Cursed Child\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 11
- testRunner.Then("The First item has the title: \"Harry Potter and the Cursed Child - Parts One & Tw" +
-                        "o\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("The first item has the title: \"Harry Potter and the Cursed Child - Parts One and " +
+                        "Two: The Official Playscript of the Original West End Production\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 12
+ testRunner.And("The first item has a badge", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
