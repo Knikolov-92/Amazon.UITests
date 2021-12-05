@@ -19,5 +19,10 @@ namespace Amazon.UITests.TestInfrastructure.Pages.SearchResult
 
             Assert.That(regex.IsMatch(element.GetAriaLabel()), Is.True);
         }
+
+        public void FirstResultHasType(string type)
+        {
+
+        }
     }
 }

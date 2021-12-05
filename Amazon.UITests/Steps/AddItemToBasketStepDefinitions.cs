@@ -42,5 +42,11 @@ namespace Amazon.UITests.Steps
         {
             _searchResult.Validate().FirstResultContainsBadge();
         }
+
+        [Then("^The first item has type: \"(.*)\"$")]
+        public void ThenTheFirstItemHasType(string type)
+        {
+            _searchResult.Validate().FirstResultHasType(type);
+        }
     }
 }

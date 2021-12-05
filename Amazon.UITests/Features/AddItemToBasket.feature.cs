@@ -125,6 +125,9 @@ this.FeatureBackground();
 #line 12
  testRunner.And("The first item has a badge", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
+#line 13
+ testRunner.And("The first item has type: \"Paperback\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
             }
             this.ScenarioCleanup();
         }

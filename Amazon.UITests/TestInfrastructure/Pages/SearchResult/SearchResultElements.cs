@@ -5,13 +5,13 @@ namespace Amazon.UITests.TestInfrastructure.Pages.SearchResult
 {
     public class SearchResultElements : BaseElements
     {
-        private const string BaseSearchResultLocator = "//div[contains(@data-component-type, 'search-result')]";
+        private const string FirstSearchResultLocator = "//div[contains(@data-component-type, 'search-result') and @data-index='0']";
 
-        public IWebElement FirstItem => Driver.FindElementWithExplicitWait(By.XPath(BaseSearchResultLocator));
+        public IWebElement FirstItem => Driver.FindElementWithExplicitWait(By.XPath(FirstSearchResultLocator));
 
-        public IWebElement FirstItemTitle => Driver.FindElementWithExplicitWait(By.XPath($"{BaseSearchResultLocator}//h2//span"));
+        public IWebElement FirstItemTitle => Driver.FindElementWithExplicitWait(By.XPath($"{FirstSearchResultLocator}//h2//span"));
 
         public IWebElement FirstItemRating => Driver.FindElementWithExplicitWait(By.XPath(
-            $"{BaseSearchResultLocator}//div[contains(@class, 'top-micro')]/div[@class='a-row a-size-small']/span"));
+            $"{FirstSearchResultLocator}//div[contains(@class, 'top-micro')]/div[@class='a-row a-size-small']/span[position()=1]"));
     }
 }
