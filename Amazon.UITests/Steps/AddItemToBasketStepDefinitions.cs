@@ -8,7 +8,6 @@ namespace Amazon.UITests.Steps
     [Binding]
     public sealed class AddItemToBasketStepDefinitions
     {
-        private readonly CookieFacade _cookie = new CookieFacade();
         private readonly SearchFacade _search = new SearchFacade();
         private readonly SearchResultFacade _searchResult = new SearchResultFacade();
 
@@ -21,8 +20,10 @@ namespace Amazon.UITests.Steps
         [Then("^The Amazon page is loaded$")]
         public void ThenTheAmazonPageIsLoaded()
         {
+            var cookieFacade = new CookieFacade();
+
             _search.Validate().SearchPageIsLoaded();
-            _cookie.AcceptCookies();
+            cookieFacade.AcceptCookies();
         }
 
         [When("^User searches for a book with title: \"(.*)\"$")]

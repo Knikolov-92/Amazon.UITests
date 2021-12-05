@@ -2,6 +2,7 @@
 using Amazon.UITests.TestInfrastructure.Extensions;
 using NUnit.Framework;
 using System.Text.RegularExpressions;
+using System.Linq;
 
 namespace Amazon.UITests.TestInfrastructure.Pages.SearchResult
 {
@@ -22,7 +23,11 @@ namespace Amazon.UITests.TestInfrastructure.Pages.SearchResult
 
         public void FirstResultHasType(string type)
         {
+            WebElementUtility.WaitForElementToBeDisplayed(() => Elements.FirstItem);
+            var itemTypes = Elements.FirstItemTypes;
+            var doesTypeExist = itemTypes.Any(element => element.Text.Equals(type));
 
+            Assert.That(doesTypeExist, Is.True);
         }
     }
 }

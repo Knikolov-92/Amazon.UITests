@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using Amazon.UITests.TestInfrastructure.Extensions;
+using System.Collections.Generic;
 
 namespace Amazon.UITests.TestInfrastructure.Pages.SearchResult
 {
@@ -13,5 +14,8 @@ namespace Amazon.UITests.TestInfrastructure.Pages.SearchResult
 
         public IWebElement FirstItemRating => Driver.FindElementWithExplicitWait(By.XPath(
             $"{FirstSearchResultLocator}//div[contains(@class, 'top-micro')]/div[@class='a-row a-size-small']/span[position()=1]"));
+
+        public IEnumerable<IWebElement> FirstItemTypes => Driver.FindElements(By.XPath
+            ($"{FirstSearchResultLocator}//a[@class='a-size-base a-link-normal a-text-bold']"));
     }
 }
