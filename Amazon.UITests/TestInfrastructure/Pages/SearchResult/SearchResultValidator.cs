@@ -29,5 +29,13 @@ namespace Amazon.UITests.TestInfrastructure.Pages.SearchResult
 
             Assert.That(doesTypeExist, Is.True);
         }
+
+        public void FirstResultHasPriceForType(string type)
+        {
+            var priceElement = WebElementUtility.WaitForElementToBeDisplayed(() => Elements.GetFirstItemPrice(type));
+            var actualPrice = priceElement.Text.GetDecimalPriceFromText();
+
+            Assert.That(string.IsNullOrEmpty(priceElement.Text), Is.False);
+        }
     }
 }

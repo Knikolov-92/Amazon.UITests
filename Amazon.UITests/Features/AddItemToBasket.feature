@@ -11,3 +11,4 @@ Scenario: Search a book and add it to basket
 	Then The first item has the title: "Harry Potter and the Cursed Child - Parts One and Two: The Official Playscript of the Original West End Production"
 	And The first item has a badge
 	And The first item has type: "Paperback"
+	And The first item has price for type: "Paperback"

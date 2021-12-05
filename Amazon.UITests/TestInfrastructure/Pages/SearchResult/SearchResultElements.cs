@@ -8,6 +8,9 @@ namespace Amazon.UITests.TestInfrastructure.Pages.SearchResult
     {
         private const string FirstSearchResultLocator = "//div[contains(@data-component-type, 'search-result') and @data-index='0']";
 
+        private readonly string ItemPriceLocator = 
+            $"{FirstSearchResultLocator}//a[@class='a-size-base a-link-normal a-text-bold'][normalize-space()='!itemType!']//following::span[@class='a-price'][position()=1]";
+
         public IWebElement FirstItem => Driver.FindElementWithExplicitWait(By.XPath(FirstSearchResultLocator));
 
         public IWebElement FirstItemTitle => Driver.FindElementWithExplicitWait(By.XPath($"{FirstSearchResultLocator}//h2//span"));
@@ -17,5 +20,12 @@ namespace Amazon.UITests.TestInfrastructure.Pages.SearchResult
 
         public IEnumerable<IWebElement> FirstItemTypes => Driver.FindElements(By.XPath
             ($"{FirstSearchResultLocator}//a[@class='a-size-base a-link-normal a-text-bold']"));
+
+        public IWebElement GetFirstItemPrice(string itemType)
+        {
+            string priceLocator = ItemPriceLocator.Replace("!itemType!", itemType);
+
+            return Driver.FindElementWithExplicitWait(By.XPath(priceLocator));
+        }
     }
 }

@@ -128,6 +128,9 @@ this.FeatureBackground();
 #line 13
  testRunner.And("The first item has type: \"Paperback\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
+#line 14
+ testRunner.And("The first item has price for type: \"Paperback\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
             }
             this.ScenarioCleanup();
         }

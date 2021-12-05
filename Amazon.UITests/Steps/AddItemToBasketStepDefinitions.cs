@@ -49,5 +49,11 @@ namespace Amazon.UITests.Steps
         {
             _searchResult.Validate().FirstResultHasType(type);
         }
+
+        [Then("^The first item has price for type: \"(.*)\"$")]
+        public void ThenTheFirstItemHasPriceForType(string type)
+        {
+            _searchResult.Validate().FirstResultHasPriceForType(type);
+        }
     }
 }
