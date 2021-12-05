@@ -9,6 +9,8 @@ namespace Amazon.UITests.TestInfrastructure.Pages
     public class BaseFacade<TElementMap, TValidator> where TElementMap : BaseElements, new()
         where TValidator : BaseValidator<TElementMap>, new()
     {
+        public BaseFacade(){}
+
         protected TElementMap Elements => new TElementMap();
 
         public TValidator Validate()
@@ -27,6 +29,14 @@ namespace Amazon.UITests.TestInfrastructure.Pages
 
             element.WaitForElementToBeClickable();
             element.Click();
+        }
+
+        protected void EnterTextInField(Func<IWebElement> element, string text)
+        {
+            var field = WebElementUtility.WaitForElementToBeDisplayed(element);
+
+            field.Clear();
+            field.SendKeys(text);
         }
     }  
 }

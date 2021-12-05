@@ -11,17 +11,23 @@ namespace Amazon.UITests.Steps
         private CookieFacade _cookie = new CookieFacade();
 
 
-        [Given("^I navigate to AmazonPage$")]
-        public void GivenINavigateToAmazonPage()
+        [Given("^User has navigated to the Amazon page$")]
+        public void GivenUserHasNavigatedToTheAmazonPage()
         {
             _search.NavigateToSearchPage();
         }
         
-        [Then("^The AmazonPage is loaded$")]
+        [Then("^The Amazon page is loaded$")]
         public void ThenTheAmazonPageIsLoaded()
         {
             _search.Validate().SearchPageIsLoaded();
             _cookie.AcceptCookies();
+        }
+
+        [When("^User searches for a book with title \"(.*)\"$")]
+        public void WhenUserSearchesForABookWithTitle(string title)
+        {
+            _search.SearchForABook(title);
         }
 
     }
