@@ -7,14 +7,9 @@ namespace Amazon.UITests.Steps
     [Binding]
     public sealed class AddItemToBasketStepDefinitions
     {        
-        private SearchFacade _search;
-        private CookieFacade _cookie;
+        private SearchFacade _search = new SearchFacade();
+        private CookieFacade _cookie = new CookieFacade();
 
-        public AddItemToBasketStepDefinitions()
-        {
-            _search = new SearchFacade();
-            _cookie = new CookieFacade();
-        }
 
         [Given("^I navigate to AmazonPage$")]
         public void GivenINavigateToAmazonPage()
