@@ -17,3 +17,6 @@ Scenario: Search a book and add it to basket
 	And The item has a badge
 	And The item has the correct selected type
 	And The item has the correct selected price
+	When User adds item to the basket
+	Then Confirmation notification with text: "Added to Basket" is displayed
+	And The number of added items to the basket is: '1'

@@ -33,5 +33,17 @@ namespace Amazon.UITests.TestInfrastructure.Pages.ItemDetails
 
             Assert.That(itemType.Text.GetDecimalPriceFromText(), Is.EqualTo(price));
         }
+
+        public void ConfirmationNotificationIsDisplayed(string text)
+        {
+            var message = WebElementUtility.WaitForElementToBeDisplayed(() => Elements.AddToBasketConfirmationMessage);
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(message.Displayed, Is.True);
+                Assert.That(message.Text.Trim(), Is.EqualTo(text));
+            });
+            
+        }
     }
 }

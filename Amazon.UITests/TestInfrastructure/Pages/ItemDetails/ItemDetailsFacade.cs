@@ -7,5 +7,10 @@ namespace Amazon.UITests.TestInfrastructure.Pages.ItemDetails
         {
 
         }
+
+        public void AddItemToBasket()
+        {
+            ClickOn(() => Elements.AddToBasketButton);
+        }
     }
 }

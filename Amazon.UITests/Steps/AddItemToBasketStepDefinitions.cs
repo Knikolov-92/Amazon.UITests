@@ -1,6 +1,7 @@
 ﻿using Amazon.UITests.TestInfrastructure.Models;
 using Amazon.UITests.TestInfrastructure.Pages.Cookie;
 using Amazon.UITests.TestInfrastructure.Pages.ItemDetails;
+using Amazon.UITests.TestInfrastructure.Pages.Navigation;
 using Amazon.UITests.TestInfrastructure.Pages.Search;
 using Amazon.UITests.TestInfrastructure.Pages.SearchResult;
 using TechTalk.SpecFlow;
@@ -13,6 +14,7 @@ namespace Amazon.UITests.Steps
         private readonly SearchFacade _search = new SearchFacade();
         private readonly SearchResultFacade _searchResult = new SearchResultFacade();
         private readonly ItemDetailsFacade _itemDetails = new ItemDetailsFacade();
+        private readonly NavigationFacade _nav = new NavigationFacade();
         private readonly Book _book = new Book();
 
         [Given("^User has navigated to the Amazon page$")]
@@ -90,6 +92,24 @@ namespace Amazon.UITests.Steps
         public void ThenTheItemHasPriceForType()
         {
             _itemDetails.Validate().SelectedItemPriceIs(_book.Price);
+        }
+
+        [When("^User adds item to the basket$")]
+        public void WhenUserAddsItemToBasket()
+        {
+            _itemDetails.AddItemToBasket();
+        }
+
+        [Then("^Confirmation notification with text: \"(.*)\" is displayed$")]
+        public void ConfirmationNotificationIsDisplayed(string text)
+        {
+            _itemDetails.Validate().ConfirmationNotificationIsDisplayed(text);
+        }
+
+        [Then("^The number of added items to the basket is: '(.*)'$")]
+        public void TheNumberOfAddedItemsToTheBasketIs(int count)
+        {
+            _nav.Validate().NumberOfItemsAddedToBasketIs(count);
         }
     }
 }
