@@ -24,12 +24,14 @@ namespace Amazon.UITests.TestInfrastructure.Pages
             Assert.That(actualTitle, Is.EqualTo(expectedTitle));
         }
 
-        protected void ValidateElementTextIs(Func<IWebElement> action, string expectedText)
+        protected string ValidateElementTextIs(Func<IWebElement> action, string expectedText)
         {
             var element = WebElementUtility.WaitForElementToBeDisplayed(action);
             string actualText = element.Text.Trim();
 
             Assert.That(actualText, Is.EqualTo(expectedText));
+
+            return actualText;
         }
     }
 }

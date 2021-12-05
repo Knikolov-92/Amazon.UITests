@@ -1,4 +1,6 @@
-﻿using Amazon.UITests.TestInfrastructure.Pages.Cookie;
+﻿using Amazon.UITests.TestInfrastructure.Models;
+using Amazon.UITests.TestInfrastructure.Pages.Cookie;
+using Amazon.UITests.TestInfrastructure.Pages.ItemDetails;
 using Amazon.UITests.TestInfrastructure.Pages.Search;
 using Amazon.UITests.TestInfrastructure.Pages.SearchResult;
 using TechTalk.SpecFlow;
@@ -10,6 +12,8 @@ namespace Amazon.UITests.Steps
     {
         private readonly SearchFacade _search = new SearchFacade();
         private readonly SearchResultFacade _searchResult = new SearchResultFacade();
+        private readonly ItemDetailsFacade _itemDetails = new ItemDetailsFacade();
+        private readonly Book _book = new Book();
 
         [Given("^User has navigated to the Amazon page$")]
         public void GivenUserHasNavigatedToTheAmazonPage()
@@ -35,7 +39,7 @@ namespace Amazon.UITests.Steps
         [Then("^The first item has the title: \"(.*)\"$")]
         public void ThenTheFirstItemHasTheTitle(string title)
         {
-            _searchResult.Validate().FirstResultTitleIs(title);
+            _book.Title = _searchResult.Validate().FirstResultTitleIs(title);            
         }
 
         [Then("^The first item has a badge$")]
@@ -48,12 +52,44 @@ namespace Amazon.UITests.Steps
         public void ThenTheFirstItemHasType(string type)
         {
             _searchResult.Validate().FirstResultHasType(type);
+
+            _book.Type = type;
         }
 
-        [Then("^The first item has price for type: \"(.*)\"$")]
-        public void ThenTheFirstItemHasPriceForType(string type)
+        [Then("^The first item has price for type$")]
+        public void ThenTheFirstItemHasPriceForType()
         {
-            _searchResult.Validate().FirstResultHasPriceForType(type);
+            _book.Price = _searchResult.Validate().FirstResultHasPriceForType(_book.Type);
+        }
+
+        [When("^User opens the book details$")]
+        public void WhenUserOpensTheBookDetails()
+        {
+            _searchResult.OpenFirstItemDetails();
+        }
+
+        [Then("^The item has the correct title$")]
+        public void ThenTheItemHasTheTitle()
+        {
+            _itemDetails.Validate().ItemHasTitle(_book.Title);
+        }
+
+        [Then("^The item has a badge$")]
+        public void ThenTheItemHasABadge()
+        {
+            _itemDetails.Validate().ItemHasBadge();
+        }
+
+        [Then("^The item has the correct selected type$")]
+        public void ThenTheItemHasType()
+        {
+            _itemDetails.Validate().SelectedItemTypeIs(_book.Type);
+        }
+
+        [Then("^The item has the correct selected price$")]
+        public void ThenTheItemHasPriceForType()
+        {
+            _itemDetails.Validate().SelectedItemPriceIs(_book.Price);
         }
     }
 }

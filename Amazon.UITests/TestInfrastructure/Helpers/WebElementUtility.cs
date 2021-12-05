@@ -45,6 +45,34 @@ namespace Amazon.UITests.TestInfrastructure.Helpers
             });
 
             return element.Invoke();
-        }        
+        }
+
+        public static bool DoesElementExistInDom(Func<IWebElement> action)
+        {
+            var doesExist = false;
+            try
+            {
+                var element = action.Invoke();
+                if (element != null)
+                    doesExist = true;
+            }
+            catch (StaleElementReferenceException)
+            {
+            }
+            catch (InvalidElementStateException)
+            {
+            }
+            catch (InvalidOperationException)
+            {
+            }
+            catch (NoSuchElementException)
+            {
+            }
+            catch (NullReferenceException)
+            {
+            }
+
+            return doesExist;
+        }
     }
 }

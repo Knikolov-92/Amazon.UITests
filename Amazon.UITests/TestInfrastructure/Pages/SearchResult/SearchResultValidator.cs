@@ -8,9 +8,11 @@ namespace Amazon.UITests.TestInfrastructure.Pages.SearchResult
 {
     public class SearchResultValidator : BaseValidator<SearchResultElements> 
     {
-        public void FirstResultTitleIs(string expectedTitle)
+        public string FirstResultTitleIs(string expectedTitle)
         {
-            ValidateElementTextIs(() => Elements.FirstItemTitle, expectedTitle);
+            string actualTitle = ValidateElementTextIs(() => Elements.FirstItemTitle, expectedTitle);
+
+            return actualTitle;
         }
 
         public void FirstResultContainsBadge()
@@ -30,12 +32,14 @@ namespace Amazon.UITests.TestInfrastructure.Pages.SearchResult
             Assert.That(doesTypeExist, Is.True);
         }
 
-        public void FirstResultHasPriceForType(string type)
+        public string FirstResultHasPriceForType(string type)
         {
             var priceElement = WebElementUtility.WaitForElementToBeDisplayed(() => Elements.GetFirstItemPrice(type));
             var actualPrice = priceElement.Text.GetDecimalPriceFromText();
 
             Assert.That(string.IsNullOrEmpty(priceElement.Text), Is.False);
+
+            return actualPrice;
         }
     }
 }
