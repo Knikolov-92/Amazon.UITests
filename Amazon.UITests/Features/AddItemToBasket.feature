@@ -18,5 +18,7 @@ Scenario: Search a book and add it to basket
 	And The item has the correct selected type
 	And The item has the correct selected price
 	When User adds item to the basket
-	Then Confirmation notification with text: "Added to Basket" is displayed
+	Then Confirmation message is displayed
 	And The number of added items to the basket is: '1'
+	When User opens the basket
+	Then The correct information for the added item is displayed

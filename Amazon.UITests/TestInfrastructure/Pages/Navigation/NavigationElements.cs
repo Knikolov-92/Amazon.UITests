@@ -6,5 +6,7 @@ namespace Amazon.UITests.TestInfrastructure.Pages.Navigation
     public class NavigationElements : BaseElements
     {
         public IWebElement ItemsCountInBasket => Driver.FindElementWithExplicitWait(By.Id("nav-cart-count"));
+
+        public IWebElement OpenBasketButton => Driver.FindElementWithExplicitWait(By.Id("nav-cart"));
     }
 }

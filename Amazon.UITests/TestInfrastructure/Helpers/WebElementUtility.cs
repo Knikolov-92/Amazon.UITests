@@ -11,7 +11,7 @@ namespace Amazon.UITests.TestInfrastructure.Helpers
         public static IWebElement WaitForElementToBeDisplayed(Func<IWebElement> element)
         {
             WebDriverWait wait = new WebDriverWait(Browser.Instance.WebDriver, TimeSpan.FromSeconds(Timeouts.DEFAULT_TIMEOUT_IN_SECONDS));
-            wait.PollingInterval = TimeSpan.FromSeconds(Timeouts.DEFAULT_RETRY_COUNT);
+            wait.PollingInterval = TimeSpan.FromSeconds(Timeouts.DEFAULT_POLLING_TIME_IN_SECONDS);
 
             wait.Until(condition =>
             {

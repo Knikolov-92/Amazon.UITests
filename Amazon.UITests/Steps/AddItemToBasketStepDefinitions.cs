@@ -1,4 +1,5 @@
 ﻿using Amazon.UITests.TestInfrastructure.Models;
+using Amazon.UITests.TestInfrastructure.Pages.Basket;
 using Amazon.UITests.TestInfrastructure.Pages.Cookie;
 using Amazon.UITests.TestInfrastructure.Pages.ItemDetails;
 using Amazon.UITests.TestInfrastructure.Pages.Navigation;
@@ -15,6 +16,7 @@ namespace Amazon.UITests.Steps
         private readonly SearchResultFacade _searchResult = new SearchResultFacade();
         private readonly ItemDetailsFacade _itemDetails = new ItemDetailsFacade();
         private readonly NavigationFacade _nav = new NavigationFacade();
+        private readonly BasketFacade _basket = new BasketFacade();
         private readonly Book _book = new Book();
 
         [Given("^User has navigated to the Amazon page$")]
@@ -100,16 +102,30 @@ namespace Amazon.UITests.Steps
             _itemDetails.AddItemToBasket();
         }
 
-        [Then("^Confirmation notification with text: \"(.*)\" is displayed$")]
-        public void ConfirmationNotificationIsDisplayed(string text)
+        [Then("^Confirmation message is displayed$")]
+        public void ThenConfirmationMessageIsDisplayed()
         {
-            _itemDetails.Validate().ConfirmationNotificationIsDisplayed(text);
+            _itemDetails.Validate().ConfirmationMessageIsDisplayed();
         }
 
         [Then("^The number of added items to the basket is: '(.*)'$")]
-        public void TheNumberOfAddedItemsToTheBasketIs(int count)
+        public void ThenTheNumberOfAddedItemsToTheBasketIs(int count)
         {
             _nav.Validate().NumberOfItemsAddedToBasketIs(count);
+
+            _book.Quantity = count;
+        }
+
+        [When("^User opens the basket$")]
+        public void WhenUserOpensTheBasket()
+        {
+            _nav.OpenBasket();
+        }
+
+        [Then("^The correct information for the added item is displayed$")]
+        public void ThenTheCorrectInformationForTheAddedItemIsDisplayed()
+        {
+            _basket.Validate().CorrectInfoForTheAddedItemIsDisplayed(_book);
         }
     }
 }

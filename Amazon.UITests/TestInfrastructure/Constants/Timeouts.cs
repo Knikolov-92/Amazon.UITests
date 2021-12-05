@@ -5,6 +5,6 @@ namespace Amazon.UITests.TestInfrastructure.Constants
     {
         public const int DEFAULT_TIMEOUT_IN_SECONDS = 20;
 
-        public const int DEFAULT_RETRY_COUNT = 10;
+        public const int DEFAULT_POLLING_TIME_IN_SECONDS = 1;
     }
 }

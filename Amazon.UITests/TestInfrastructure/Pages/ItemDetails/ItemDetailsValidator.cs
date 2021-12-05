@@ -1,6 +1,7 @@
 ﻿using Amazon.UITests.TestInfrastructure.Helpers;
 using Amazon.UITests.TestInfrastructure.Extensions;
 using NUnit.Framework;
+using Amazon.UITests.TestInfrastructure.Constants;
 
 namespace Amazon.UITests.TestInfrastructure.Pages.ItemDetails
 {
@@ -8,9 +9,7 @@ namespace Amazon.UITests.TestInfrastructure.Pages.ItemDetails
     {
         public void ItemHasTitle(string title)
         {
-            var titleElement = WebElementUtility.WaitForElementToBeDisplayed(() => Elements.ItemTitle);
-
-            Assert.That(titleElement.Text.Trim(), Is.EqualTo(title));
+            ValidateElementTextIs(() => Elements.ItemTitle, title);
         }
 
         public void ItemHasBadge()
@@ -22,9 +21,7 @@ namespace Amazon.UITests.TestInfrastructure.Pages.ItemDetails
 
         public void SelectedItemTypeIs(string type)
         {
-            var itemType = WebElementUtility.WaitForElementToBeDisplayed(() => Elements.SelectedItemType);
-
-            Assert.That(itemType.Text.Trim(), Is.EqualTo(type));
+            ValidateElementTextIs(() => Elements.SelectedItemType, type);            
         }
 
         public void SelectedItemPriceIs(string price)
@@ -34,16 +31,15 @@ namespace Amazon.UITests.TestInfrastructure.Pages.ItemDetails
             Assert.That(itemType.Text.GetDecimalPriceFromText(), Is.EqualTo(price));
         }
 
-        public void ConfirmationNotificationIsDisplayed(string text)
+        public void ConfirmationMessageIsDisplayed()
         {
             var message = WebElementUtility.WaitForElementToBeDisplayed(() => Elements.AddToBasketConfirmationMessage);
 
             Assert.Multiple(() =>
             {
                 Assert.That(message.Displayed, Is.True);
-                Assert.That(message.Text.Trim(), Is.EqualTo(text));
-            });
-            
+                Assert.That(message.Text.Trim(), Is.EqualTo(Messages.ADD_TO_BASKET_CONFIRMATION_MESSAGE));
+            });            
         }
     }
 }
